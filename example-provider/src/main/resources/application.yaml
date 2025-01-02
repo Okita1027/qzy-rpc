@@ -1,0 +1,4 @@
+rpc:
+  name: qzy-rpc-y
+  version: 2.2
+  serverPort: 8082
