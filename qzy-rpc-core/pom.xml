@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>learn.qzy</groupId>
-    <artifactId>example-consumer</artifactId>
+    <artifactId>qzy-rpc-core</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -15,20 +15,10 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>learn.qzy</groupId>-->
-<!--            <artifactId>qzy-rpc-easy</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
         <dependency>
-            <groupId>learn.qzy</groupId>
-            <artifactId>qzy-rpc-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>learn.qzy</groupId>
-            <artifactId>example-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>4.5.9</version>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -41,5 +31,19 @@
             <version>1.18.36</version>
             <scope>provided</scope>
         </dependency>
+        <!-- 日志 -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.3.12</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
+
 </project>

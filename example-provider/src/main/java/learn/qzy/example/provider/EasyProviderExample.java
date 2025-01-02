@@ -1,8 +1,8 @@
 package learn.qzy.example.provider;
 
 import learn.qzy.example.common.service.UserService;
-import learn.qzy.rpc.registry.LocalRegistry;
-import learn.qzy.rpc.server.VertxHttpServer;
+import rpc.registry.LocalRegistry;
+import rpc.server.VertxHttpServer;
 
 /**
  * @author qzy

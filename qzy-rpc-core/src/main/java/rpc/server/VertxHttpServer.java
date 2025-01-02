@@ -1,4 +1,4 @@
-package learn.qzy.rpc.server;
+package rpc.server;
 
 import io.vertx.core.Vertx;
 

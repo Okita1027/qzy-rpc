@@ -2,7 +2,7 @@ package learn.qzy.example.consumer;
 
 import learn.qzy.example.common.model.User;
 import learn.qzy.example.common.service.UserService;
-import learn.qzy.rpc.proxy.ServiceProxyFactory;
+import rpc.proxy.ServiceProxyFactory;
 
 /**
  * @author qzy
@@ -11,7 +11,7 @@ import learn.qzy.rpc.proxy.ServiceProxyFactory;
  */
 public class EasyConsumerExample {
     public static void main(String[] args) {
-        // 需要获取UserService的实现类对象
+        // 获取UserService的实现类对象
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
         User user = new User();
         user.setName("qzy");

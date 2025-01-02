@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="qzy-rpc-easy" />
+        <module name="qzy-rpc-core" />
         <module name="example-provider" />
         <module name="example-consumer" />
         <module name="example-common" />
