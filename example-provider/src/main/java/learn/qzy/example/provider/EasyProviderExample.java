@@ -2,8 +2,11 @@ package learn.qzy.example.provider;
 
 import learn.qzy.example.common.service.UserService;
 import rpc.RpcApplication;
+import rpc.config.RpcConfig;
+import rpc.constant.RpcConstant;
 import rpc.registry.LocalRegistry;
 import rpc.server.VertxHttpServer;
+import rpc.utils.ConfigUtils;
 
 /**
  * @author qzy
@@ -22,6 +25,5 @@ public class EasyProviderExample {
         VertxHttpServer httpServer = new VertxHttpServer();
         httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
 
-        System.out.println("RpcApplication.getRpcConfig().getName() = " + RpcApplication.getRpcConfig().getName());
     }
 }

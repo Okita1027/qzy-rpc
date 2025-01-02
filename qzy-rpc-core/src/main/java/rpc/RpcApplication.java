@@ -36,6 +36,10 @@ public class RpcApplication {
             newRpcConfig = new RpcConfig();
         }
         init(newRpcConfig);
+        // 监听配置文件的变化
+        ConfigUtils.watchConfig(RpcConfig.class, RpcConstant.DEFAULT_CONFIG_PREFIX, null, config -> {
+            System.out.println("Config Updated:" + config);
+        });
     }
 
     /**
