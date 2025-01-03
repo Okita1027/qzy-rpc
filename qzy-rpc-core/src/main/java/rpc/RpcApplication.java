@@ -17,8 +17,6 @@ public class RpcApplication {
 
     /**
      * 框架初始化，支持传入自定义配置
-     *
-     * @param newRpcConfig
      */
     public static void init(RpcConfig newRpcConfig) {
         rpcConfig = newRpcConfig;
@@ -38,7 +36,7 @@ public class RpcApplication {
         init(newRpcConfig);
         // 监听配置文件的变化
         ConfigUtils.watchConfig(RpcConfig.class, RpcConstant.DEFAULT_CONFIG_PREFIX, null, config -> {
-            System.out.println("Config Updated:" + config);
+            System.out.println("RPC Config Updated:" + config);
         });
     }
 

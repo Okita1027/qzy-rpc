@@ -1,9 +1,14 @@
 package rpc.proxy;
 
 import lombok.extern.slf4j.Slf4j;
+import net.datafaker.Faker;
 
+import java.io.Serializable;
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.time.LocalDateTime;
+import java.util.Locale;
 
 /**
  * @author qzy
@@ -23,24 +28,30 @@ public class MockServiceProxy implements InvocationHandler {
     /**
      * 生成指定类型的默认值对象
      */
-    private Object getDefaultObject(Class<?> type) {
+    private Object getDefaultObject(Class<?> type) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        Faker faker = new Faker(new Locale("zh-CN"));
         // 基本类型
         if (type.isPrimitive()) {
             if (type == int.class) {
-                return 1;
+                return faker.random().nextInt();
+            } else if (type == byte.class) {
+                return (byte) faker.random().nextInt(Byte.MAX_VALUE);
             } else if (type == short.class) {
-                return (short) 2;
+                return (short) faker.random().nextInt(Short.MAX_VALUE);
             } else if (type == long.class) {
-                return 3L;
+                return faker.random().nextLong();
             } else if (type == float.class) {
-                return 4.1f;
+                return faker.random().nextFloat();
             } else if (type == double.class) {
-                return 5.2d;
+                return faker.random().nextDouble();
             } else if (type == boolean.class) {
-                return false;
+                return faker.random().nextBoolean();
             }
+        } else if (type == LocalDateTime.class) {
+            return LocalDateTime.now();
         }
-        // 对象类型
+        // 其它类型
         return null;
     }
+
 }

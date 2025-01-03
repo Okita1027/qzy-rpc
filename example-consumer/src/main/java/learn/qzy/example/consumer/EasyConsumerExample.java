@@ -7,7 +7,7 @@ import rpc.proxy.ServiceProxyFactory;
 /**
  * @author qzy
  * @time 2025年1月01日 17:45 星期三
- * @title
+ * @title 服务消费者主启动类
  */
 public class EasyConsumerExample {
     public static void main(String[] args) {
@@ -23,7 +23,7 @@ public class EasyConsumerExample {
             System.out.println("用户名不存在!");
         }
 
-        long number = userService.getNumber();
+        short number = userService.getNumber();
         System.out.println("number = " + number);
     }
 }

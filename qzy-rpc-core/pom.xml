@@ -43,10 +43,17 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <!-- 解析YAML -->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>2.3</version>
+        </dependency>
+        <!-- 生成虚假数据 -->
+        <dependency>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>2.4.2</version>
         </dependency>
     </dependencies>
 
