@@ -22,5 +22,8 @@ public class EasyConsumerExample {
         } else {
             System.out.println("用户名不存在!");
         }
+
+        long number = userService.getNumber();
+        System.out.println("number = " + number);
     }
 }
