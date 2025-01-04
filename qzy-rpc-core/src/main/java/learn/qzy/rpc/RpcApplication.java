@@ -1,9 +1,9 @@
-package rpc;
+package learn.qzy.rpc;
 
 import lombok.extern.slf4j.Slf4j;
-import rpc.config.RpcConfig;
-import rpc.constant.RpcConstant;
-import rpc.utils.ConfigUtils;
+import learn.qzy.rpc.config.RpcConfig;
+import learn.qzy.rpc.constant.RpcConstant;
+import learn.qzy.rpc.utils.ConfigUtils;
 
 /**
  * @author qzy

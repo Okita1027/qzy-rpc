@@ -1,4 +1,4 @@
 rpc:
-  name: qzy-rpc-provider-yaml
-  version: 2.2
-  serverPort: 8082
+  name: qzy-rpc
+  version: 2.0
+  serverPort: 8080

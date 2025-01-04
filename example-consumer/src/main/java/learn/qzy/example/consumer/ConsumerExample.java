@@ -1,7 +1,7 @@
 package learn.qzy.example.consumer;
 
-import rpc.config.RpcConfig;
-import rpc.utils.ConfigUtils;
+import learn.qzy.rpc.config.RpcConfig;
+import learn.qzy.rpc.utils.ConfigUtils;
 
 /**
  * @author qzy
@@ -10,7 +10,7 @@ import rpc.utils.ConfigUtils;
  */
 public class ConsumerExample {
     public static void main(String[] args) {
-        RpcConfig rpc = ConfigUtils.loadConfig(RpcConfig.class, "rpc");
+        RpcConfig rpc = ConfigUtils.loadConfig(RpcConfig.class, "learn/qzy/rpc");
         System.out.println("rpc = " + rpc);
     }
 }

@@ -3,7 +3,7 @@ import cn.hutool.core.lang.Dict;
 import cn.hutool.setting.dialect.Props;
 import cn.hutool.setting.yaml.YamlUtil;
 import org.junit.Test;
-import rpc.config.RpcConfig;
+import learn.qzy.rpc.config.RpcConfig;
 
 /**
  * @author qzy
@@ -16,7 +16,7 @@ public class YamlUtilTest {
         String yamlFile = "application.yaml";
         // 解析YAML
         Dict dict = YamlUtil.loadByPath(yamlFile);
-        RpcConfig rpcConfig = BeanUtil.toBean(dict.get("rpc"), RpcConfig.class);
+        RpcConfig rpcConfig = BeanUtil.toBean(dict.get("learn/qzy/rpc"), RpcConfig.class);
         System.out.println("rpcConfig = " + rpcConfig);
     }
 

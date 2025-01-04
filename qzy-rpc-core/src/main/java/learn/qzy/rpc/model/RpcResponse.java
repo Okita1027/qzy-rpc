@@ -1,4 +1,4 @@
-package rpc.model;
+package learn.qzy.rpc.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

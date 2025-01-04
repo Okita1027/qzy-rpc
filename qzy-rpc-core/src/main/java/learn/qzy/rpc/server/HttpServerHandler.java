@@ -1,14 +1,16 @@
-package rpc.server;
+package learn.qzy.rpc.server;
 
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
-import rpc.model.RpcRequest;
-import rpc.model.RpcResponse;
-import rpc.registry.LocalRegistry;
-import rpc.serializer.JdkSerializer;
-import rpc.serializer.Serializer;
+import learn.qzy.rpc.RpcApplication;
+import learn.qzy.rpc.model.RpcRequest;
+import learn.qzy.rpc.model.RpcResponse;
+import learn.qzy.rpc.registry.LocalRegistry;
+import learn.qzy.rpc.serializer.JdkSerializer;
+import learn.qzy.rpc.serializer.Serializer;
+import learn.qzy.rpc.serializer.SerializerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -28,7 +30,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     @Override
     public void handle(HttpServerRequest request) {
         // 指定序列化器
-        final Serializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         // 记录日志
         System.out.println("Received request:" + request.method() + " " + request.uri());

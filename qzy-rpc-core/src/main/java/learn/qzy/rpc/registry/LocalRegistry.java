@@ -1,4 +1,4 @@
-package rpc.registry;
+package learn.qzy.rpc.registry;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

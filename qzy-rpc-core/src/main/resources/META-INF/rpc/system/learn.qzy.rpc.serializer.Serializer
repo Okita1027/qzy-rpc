@@ -1,0 +1,4 @@
+jdk=learn.qzy.rpc.serializer.JdkSerializer
+json=learn.qzy.rpc.serializer.JsonSerializer
+kryo=learn.qzy.rpc.serializer.KryoSerializer
+hessian=learn.qzy.rpc.serializer.HessianSerializer

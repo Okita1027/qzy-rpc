@@ -1,4 +1,4 @@
-package rpc.serializer;
+package learn.qzy.rpc.serializer;
 
 
 import java.io.*;

@@ -1,4 +1,4 @@
-package rpc.utils;
+package learn.qzy.rpc.utils;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.io.FileUtil;
@@ -8,14 +8,10 @@ import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.setting.dialect.Props;
 import cn.hutool.setting.yaml.YamlUtil;
-import rpc.config.RpcConfig;
 
 import java.io.File;
-import java.io.FileReader;
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;
-
-import static rpc.constant.RpcConstant.DEFAULT_CONFIG_PREFIX;
 
 /**
  * @author qzy

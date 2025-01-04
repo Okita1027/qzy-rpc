@@ -1,7 +1,7 @@
-package rpc.proxy;
+package learn.qzy.rpc.proxy;
 
 
-import rpc.RpcApplication;
+import learn.qzy.rpc.RpcApplication;
 
 import java.lang.reflect.Proxy;
 

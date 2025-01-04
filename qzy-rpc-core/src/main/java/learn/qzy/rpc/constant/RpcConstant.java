@@ -1,4 +1,4 @@
-package rpc.constant;
+package learn.qzy.rpc.constant;
 
 /**
  * @author qzy

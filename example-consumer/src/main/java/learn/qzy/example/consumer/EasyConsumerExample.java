@@ -2,7 +2,7 @@ package learn.qzy.example.consumer;
 
 import learn.qzy.example.common.model.User;
 import learn.qzy.example.common.service.UserService;
-import rpc.proxy.ServiceProxyFactory;
+import learn.qzy.rpc.proxy.ServiceProxyFactory;
 
 /**
  * @author qzy
@@ -23,7 +23,8 @@ public class EasyConsumerExample {
             System.out.println("用户名不存在!");
         }
 
-        short number = userService.getNumber();
-        System.out.println("number = " + number);
+        // mock测试
+//        short number = userService.getNumber();
+//        System.out.println("number = " + number);
     }
 }
