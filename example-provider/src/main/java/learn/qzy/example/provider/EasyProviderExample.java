@@ -12,8 +12,6 @@ import learn.qzy.rpc.server.VertxHttpServer;
  */
 public class EasyProviderExample {
     public static void main(String[] args) {
-        // RPC框架初始化
-        RpcApplication.init();
 
         // 注册服务
         LocalRegistry.register(UserService.class.getName(), UserServiceImpl.class);

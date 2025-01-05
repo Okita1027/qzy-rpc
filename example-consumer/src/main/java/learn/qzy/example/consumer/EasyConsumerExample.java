@@ -11,20 +11,16 @@ import learn.qzy.rpc.proxy.ServiceProxyFactory;
  */
 public class EasyConsumerExample {
     public static void main(String[] args) {
-        // 获取UserService的实现类对象
+        // 动态代理获取服务对象
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
         User user = new User();
         user.setName("qzy");
         // 调用
         User newUser = userService.getuser(user);
         if (newUser != null) {
-            System.out.println("用户名：" + newUser.getName());
+            System.out.println(newUser.getName());
         } else {
-            System.out.println("用户名不存在!");
+            System.out.println("user == null");
         }
-
-        // mock测试
-//        short number = userService.getNumber();
-//        System.out.println("number = " + number);
     }
 }

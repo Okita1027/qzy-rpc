@@ -1,5 +1,8 @@
 package learn.qzy.rpc;
 
+import learn.qzy.rpc.config.RegistryConfig;
+import learn.qzy.rpc.registry.Registry;
+import learn.qzy.rpc.registry.RegistryFactory;
 import lombok.extern.slf4j.Slf4j;
 import learn.qzy.rpc.config.RpcConfig;
 import learn.qzy.rpc.constant.RpcConstant;
@@ -21,6 +24,11 @@ public class RpcApplication {
     public static void init(RpcConfig newRpcConfig) {
         rpcConfig = newRpcConfig;
         log.info("RpcApplication init, config = {}", newRpcConfig.toString());
+        // 注册中心初始化
+        RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
+        Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
+        registry.init(registryConfig);
+        log.info("registry init, config = {}", registryConfig);
     }
 
     /**

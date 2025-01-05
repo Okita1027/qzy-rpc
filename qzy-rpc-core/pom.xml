@@ -56,7 +56,13 @@
             <artifactId>datafaker</artifactId>
             <version>2.4.2</version>
         </dependency>
-        <!-- 序列化 -->
+        <!-- ETCD -->
+        <dependency>
+            <groupId>io.etcd</groupId>
+            <artifactId>jetcd-core</artifactId>
+            <version>0.8.4</version>
+        </dependency>
+        <!-- 各种序列化器 -->
         <dependency>
             <groupId>com.caucho</groupId>
             <artifactId>hessian</artifactId>

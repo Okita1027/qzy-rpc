@@ -99,13 +99,15 @@ public class SpiLoader {
      * 获取某个接口的实例
      */
     public static <T> T getInstance(Class<T> tClass, String key) {
-        if (loaderMap.isEmpty()) {
+        // 懒加载序列化器
+        if (!loaderMap.containsKey(tClass.getName())) {
             synchronized (loaderMap) {
-                if (loaderMap.isEmpty()) {
+                if (!loaderMap.containsKey(tClass.getName())) {
                     load(Serializer.class);
                 }
             }
         }
+
         String tClassName = tClass.getName();
         Map<String, Class<?>> keyClassMap = loaderMap.get(tClassName);
         if (keyClassMap == null) {
