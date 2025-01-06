@@ -20,6 +20,8 @@ public class ConsumerExample {
         user.setName("qzy");
         // 调用
         User newUser = userService.getuser(user);
+        newUser = userService.getuser(user);
+        newUser = userService.getuser(user);
         if (newUser != null) {
             System.out.println("用户名：" + newUser.getName());
         } else {

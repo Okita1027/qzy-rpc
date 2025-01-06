@@ -3,6 +3,7 @@ import io.etcd.jetcd.Client;
 import io.etcd.jetcd.KV;
 import io.etcd.jetcd.kv.DeleteResponse;
 import io.etcd.jetcd.kv.GetResponse;
+import io.etcd.jetcd.options.DeleteOption;
 import io.etcd.jetcd.options.PutOption;
 import io.etcd.jetcd.watch.WatchEvent;
 import org.junit.Test;
@@ -108,14 +109,25 @@ public class EtcdTest {
         client.getWatchClient().watch(key, watchResponse -> {
             watchResponse.getEvents().forEach(event -> {
                 WatchEvent.EventType eventType = event.getEventType();
-                String value = event.getKeyValue().getValue().toString();
-                System.out.println("eventType = " + eventType + ",value = " + value);
+                switch (eventType) {
+                    case DELETE: {
+                        System.out.println("Key deleted!");
+                        break;
+                    }
+                    case PUT: {
+                        System.out.println("Key updated!");
+                        String value = event.getKeyValue().getValue().toString();
+                        System.out.println("eventType = " + eventType + ",value = " + value);
+                        break;
+                    }
+                }
             });
         });
 
         System.out.println("Watching key changes...");
 
-        client.getKVClient().put(key, ByteSequence.from("admin".getBytes())).get();
+        client.getKVClient().put(key, ByteSequence.from("root".getBytes())).get();
+        client.getKVClient().delete(key, DeleteOption.DEFAULT).get();
 
         client.close();
     }

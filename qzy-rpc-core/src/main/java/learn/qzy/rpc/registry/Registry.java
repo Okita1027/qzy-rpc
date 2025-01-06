@@ -37,4 +37,14 @@ public interface Registry {
      */
     void destroy();
 
+    /**
+     * 心跳检测（服务端）
+     */
+    void heartBeat();
+
+    /**
+     * 服务监听（消费端）
+     */
+    void watch(String serviceNodeKey);
+
 }

@@ -46,6 +46,9 @@ public class RegistryTest {
         serviceMetaInfo.setServiceHost("localhost");
         serviceMetaInfo.setServicePort(1234);
         registry.register(serviceMetaInfo);
+
+        // 阻塞一分钟测试心跳检测
+        Thread.sleep(60 * 1000L);
     }
 
     @Test
@@ -58,4 +61,5 @@ public class RegistryTest {
         Assert.assertNotNull(serviceMetaInfoList);
         System.out.println("serviceMetaInfoList = " + serviceMetaInfoList);
     }
+
 }

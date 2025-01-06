@@ -72,6 +72,7 @@ public class ConfigUtils {
                 T config = props.toBean(tClass, prefix);
                 callback.onUpdate(config);
             });
+            return;
         }
         // 监听 YAML 文件
         String yamlFilePath = configFileBuilder + ".yaml";
