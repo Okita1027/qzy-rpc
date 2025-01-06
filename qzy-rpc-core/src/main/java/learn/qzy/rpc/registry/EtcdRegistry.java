@@ -17,7 +17,6 @@ import java.time.Duration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * @author qzy
@@ -43,7 +42,8 @@ public class EtcdRegistry implements Registry {
     /**
      * 注册中心服务缓存
      */
-    private final RegistryServiceCache registryServiceCache = new RegistryServiceCache();
+//    private final RegistryServiceCache registryServiceCache = new RegistryServiceCache();
+    private final RegistryServiceMultiCache registryServiceMultiCache = new RegistryServiceMultiCache();
 
     /**
      * 正在监听的key集合
@@ -89,7 +89,8 @@ public class EtcdRegistry implements Registry {
     @Override
     public List<ServiceMetaInfo> serviceDiscovery(String serviceKey) {
         // 优先从缓存获取服务
-        List<ServiceMetaInfo> cachedServiceMetaInfoList = registryServiceCache.readCache();
+//        List<ServiceMetaInfo> cachedServiceMetaInfoList = registryServiceCache.readCache();
+        List<ServiceMetaInfo> cachedServiceMetaInfoList = registryServiceMultiCache.readCache(serviceKey);
         if (cachedServiceMetaInfoList != null) {
             return cachedServiceMetaInfoList;
         }
@@ -105,13 +106,14 @@ public class EtcdRegistry implements Registry {
             List<ServiceMetaInfo> serviceMetaInfoList = keyValues.stream().map(keyValue -> {
                 String key = keyValue.getKey().toString(StandardCharsets.UTF_8);
                 // 监听key的变化
-                watch(key);
+                watch(serviceKey, key);
                 String value = keyValue.getValue().toString(StandardCharsets.UTF_8);
                 return JSONUtil.toBean(value, ServiceMetaInfo.class);
             }).toList();
 
             // 写入服务缓存
-            registryServiceCache.writeCache(serviceMetaInfoList);
+//            registryServiceCache.writeCache(serviceMetaInfoList);
+            registryServiceMultiCache.writeCache(serviceKey, serviceMetaInfoList);
             return serviceMetaInfoList;
         } catch (Exception e) {
             throw new RuntimeException("获取服务列表失败", e);
@@ -171,7 +173,7 @@ public class EtcdRegistry implements Registry {
     }
 
     @Override
-    public void watch(String serviceNodeKey) {
+    public void watch(String serviceKey, String serviceNodeKey) {
         Watch watchClient = client.getWatchClient();
         // 开启监听
         boolean newWatch = watchingKeySet.add(serviceNodeKey);
@@ -182,7 +184,8 @@ public class EtcdRegistry implements Registry {
                         // key删除时触发
                         case DELETE:
                             // 清理注册服务缓存
-                            registryServiceCache.clearCache();
+//                            registryServiceCache.clearCache();
+                            registryServiceMultiCache.clearCache(serviceKey);
                             break;
                         case PUT:
                         default:

@@ -45,6 +45,6 @@ public interface Registry {
     /**
      * 服务监听（消费端）
      */
-    void watch(String serviceNodeKey);
+    void watch(String serviceKey, String serviceNodeKey);
 
 }

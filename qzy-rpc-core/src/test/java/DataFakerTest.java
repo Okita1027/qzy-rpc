@@ -1,13 +1,8 @@
 import net.datafaker.Faker;
-import net.datafaker.providers.entertainment.ResidentEvil;
 import net.datafaker.providers.videogame.DarkSouls;
 import net.datafaker.providers.videogame.EldenRing;
 import org.junit.Test;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 /**
