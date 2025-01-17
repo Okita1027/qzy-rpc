@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 /**
  * @author qzy
  * @time 2025年1月17日 10:05 星期五
- * @title
+ * @title 协议消息结构
  */
 @Data
 @AllArgsConstructor

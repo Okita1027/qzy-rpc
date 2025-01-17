@@ -12,7 +12,7 @@ import java.util.Arrays;
 /**
  * @author qzy
  * @time 2025年1月17日 10:08 星期五
- * @title
+ * @title Vertx TCP 服务端
  */
 public class VertxTcpServer implements HttpServer {
 
@@ -32,7 +32,7 @@ public class VertxTcpServer implements HttpServer {
 
         // 处理请求
         server.connectHandler(new TcpServerHandler());
-/*        server.connectHandler(socket -> {
+        /*server.connectHandler(socket -> {
             // 构造parser
             RecordParser parser = RecordParser.newFixed(8);
             parser.setOutput(new Handler<Buffer>() {
@@ -60,7 +60,8 @@ public class VertxTcpServer implements HttpServer {
                 }
             });
             socket.handler(parser);
-*//*            String testMessage = "Hello, server!Hello, server!Hello, server!Hello, server!";
+*/
+        /*            String testMessage = "Hello, server!Hello, server!Hello, server!Hello, server!";
             int messageLength = testMessage.getBytes().length;
 
             // 构造parser
@@ -76,8 +77,8 @@ public class VertxTcpServer implements HttpServer {
                 }
             });
             // 处理连接
-            socket.handler(parser);*//*
-*//*            socket.handler(buffer -> {
+            socket.handler(parser);*/
+        /*            socket.handler(buffer -> {
                 String testMessage = "Hello, server!Hello, server!Hello, server!Hello, server!";
                 int messageLength = testMessage.getBytes().length;
                 if (buffer.getBytes().length < messageLength) {
@@ -101,7 +102,8 @@ public class VertxTcpServer implements HttpServer {
 //                byte[] responseData = handleRequest(requestData);
 //                // 发送响应
 //                socket.write(Buffer.buffer(responseData));
-            });*//*
+            });*/
+        /*
         });*/
 
         // 启动 TCP 服务器并监听指定端口

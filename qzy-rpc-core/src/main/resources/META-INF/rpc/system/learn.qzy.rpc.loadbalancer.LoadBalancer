@@ -1,0 +1,3 @@
+roundRobin=learn.qzy.rpc.loadbalancer.RoundRobinLoadBalancer
+random=learn.qzy.rpc.loadbalancer.RandomLoadBalancer
+consistentHash=learn.qzy.rpc.loadbalancer.ConsistentHashLoadBalancer

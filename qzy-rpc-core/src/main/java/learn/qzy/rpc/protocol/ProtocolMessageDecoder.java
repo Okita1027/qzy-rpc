@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * @author qzy
  * @time 2025年1月17日 10:16 星期五
- * @title
+ * @title 协议消息解码器
  */
 public class ProtocolMessageDecoder {
     /**
@@ -28,7 +28,7 @@ public class ProtocolMessageDecoder {
         byte magic = buffer.getByte(0);
         // 校验魔数
         if (magic != ProtocolConstant.PROTOCOL_MAGIC) {
-            throw new RuntimeException("消息 magic 非法");
+            throw new RuntimeException("消息 magic 非法！");
         }
         header.setMagic(magic);
         header.setVersion(buffer.getByte(1));
@@ -49,17 +49,16 @@ public class ProtocolMessageDecoder {
         if (messageTypeEnum == null) {
             throw new RuntimeException("序列化消息的类型不存在");
         }
-        switch (messageTypeEnum) {
-            case REQUEST:
+        return switch (messageTypeEnum) {
+            case REQUEST -> {
                 RpcRequest request = serializer.deserialize(bodyBytes, RpcRequest.class);
-                return new ProtocolMessage<>(header, request);
-            case RESPONSE:
+                yield new ProtocolMessage<>(header, request);
+            }
+            case RESPONSE -> {
                 RpcResponse response = serializer.deserialize(bodyBytes, RpcResponse.class);
-                return new ProtocolMessage<>(header, response);
-            case HEART_BEAT:
-            case OTHERS:
-            default:
-                throw new RuntimeException("暂不支持该消息类型");
-        }
+                yield new ProtocolMessage<>(header, response);
+            }
+            default -> throw new RuntimeException("暂不支持该消息类型");
+        };
     }
 }
