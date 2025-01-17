@@ -9,6 +9,7 @@ import learn.qzy.rpc.registry.LocalRegistry;
 import learn.qzy.rpc.registry.Registry;
 import learn.qzy.rpc.registry.RegistryFactory;
 import learn.qzy.rpc.server.VertxHttpServer;
+import learn.qzy.rpc.server.tcp.VertxTcpServer;
 
 /**
  * @author qzy
@@ -38,9 +39,13 @@ public class ProviderExample {
             throw new RuntimeException(e);
         }
 
+        // 启动 TCP 服务
+        VertxTcpServer vertxTcpServer = new VertxTcpServer();
+        vertxTcpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
+
         // 启动web服务
-        VertxHttpServer httpServer = new VertxHttpServer();
-        httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
+//        VertxHttpServer httpServer = new VertxHttpServer();
+//        httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
 
     }
 }
