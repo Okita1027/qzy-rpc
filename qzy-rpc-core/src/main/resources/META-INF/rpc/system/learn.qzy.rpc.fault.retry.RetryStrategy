@@ -1,0 +1,2 @@
+no=learn.qzy.rpc.fault.retry.NoRetryStrategy
+fixedInterval=learn.qzy.rpc.fault.retry.FixedIntervalRetryStrategy

@@ -13,7 +13,6 @@ import learn.qzy.rpc.utils.ConfigUtils;
  */
 public class ConsumerExample {
     public static void main(String[] args) {
-
         // 获取UserService的实现类对象
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
         User user = new User();

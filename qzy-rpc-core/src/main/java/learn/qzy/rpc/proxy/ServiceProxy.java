@@ -10,6 +10,8 @@ import io.vertx.core.net.NetClient;
 import learn.qzy.rpc.RpcApplication;
 import learn.qzy.rpc.config.RpcConfig;
 import learn.qzy.rpc.constant.RpcConstant;
+import learn.qzy.rpc.fault.retry.RetryStrategy;
+import learn.qzy.rpc.fault.retry.RetryStrategyFactory;
 import learn.qzy.rpc.loadbalancer.LoadBalancer;
 import learn.qzy.rpc.loadbalancer.LoadBalancerFactory;
 import learn.qzy.rpc.model.RpcRequest;
@@ -74,8 +76,11 @@ public class ServiceProxy implements InvocationHandler {
             requestParams.put("methodName", rpcRequest.getMethodName());
             ServiceMetaInfo selectedServiceMetaInfo = loadBalancer.select(requestParams, serviceMetaInfoList);
 
-            // 发送 TCP 请求
-            RpcResponse rpcResponse = VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo);
+            // 使用重试机制、发送 TCP 请求
+            RetryStrategy retryStrategy = RetryStrategyFactory.getInstance(rpcConfig.getRetryStrategy());
+            RpcResponse rpcResponse = retryStrategy.doRetry(() ->
+                    VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo)
+            );
             return rpcResponse.getData();
         } catch (Exception e) {
             throw new RuntimeException("调用失败!");

@@ -1,5 +1,6 @@
 package learn.qzy.rpc.config;
 
+import learn.qzy.rpc.fault.retry.RetryStrategyKeys;
 import learn.qzy.rpc.loadbalancer.LoadBalancerKeys;
 import learn.qzy.rpc.serializer.SerializerKeys;
 import lombok.Data;
@@ -50,4 +51,9 @@ public class RpcConfig {
      * 负载均衡器
      */
     private String loadBalancer = LoadBalancerKeys.ROUND_ROBIN;
+
+    /**
+     * 重试策略
+     */
+    private String retryStrategy = RetryStrategyKeys.FIXED_INTERVAL;
 }
