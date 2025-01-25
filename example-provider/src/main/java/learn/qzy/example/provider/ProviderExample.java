@@ -1,15 +1,11 @@
 package learn.qzy.example.provider;
 
 import learn.qzy.example.common.service.UserService;
-import learn.qzy.rpc.RpcApplication;
-import learn.qzy.rpc.config.RegistryConfig;
-import learn.qzy.rpc.config.RpcConfig;
-import learn.qzy.rpc.model.ServiceMetaInfo;
-import learn.qzy.rpc.registry.LocalRegistry;
-import learn.qzy.rpc.registry.Registry;
-import learn.qzy.rpc.registry.RegistryFactory;
-import learn.qzy.rpc.server.VertxHttpServer;
-import learn.qzy.rpc.server.tcp.VertxTcpServer;
+import learn.qzy.rpc.bootstrap.ProviderBootStrap;
+import learn.qzy.rpc.model.ServiceRegisterInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author qzy
@@ -18,6 +14,14 @@ import learn.qzy.rpc.server.tcp.VertxTcpServer;
  */
 public class ProviderExample {
     public static void main(String[] args) {
+        // 要注册的服务
+        List<ServiceRegisterInfo<?>> serviceRegisterInfoList = new ArrayList<>();
+        ServiceRegisterInfo serviceRegisterInfo = new ServiceRegisterInfo(UserService.class.getName(), UserServiceImpl.class);
+        serviceRegisterInfoList.add(serviceRegisterInfo);
+        // 服务提供者初始化
+        ProviderBootStrap.init(serviceRegisterInfoList);
+    }
+/*    public static void main(String[] args) {
         // RPC框架初始化
         RpcApplication.init();
 
@@ -47,5 +51,5 @@ public class ProviderExample {
 //        VertxHttpServer httpServer = new VertxHttpServer();
 //        httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
 
-    }
+    }*/
 }
