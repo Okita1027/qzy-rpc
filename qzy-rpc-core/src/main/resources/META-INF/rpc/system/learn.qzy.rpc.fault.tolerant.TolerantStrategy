@@ -1,0 +1,4 @@
+failBack=learn.qzy.rpc.fault.tolerant.FailBackTolerantStrategy
+failFast=learn.qzy.rpc.fault.tolerant.FailFastTolerantStrategy
+failOver=learn.qzy.rpc.fault.tolerant.FailOverTolerantStrategy
+failSafe=learn.qzy.rpc.fault.tolerant.FailSafeTolerantStrategy

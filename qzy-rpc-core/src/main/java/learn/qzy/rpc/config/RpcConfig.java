@@ -1,6 +1,7 @@
 package learn.qzy.rpc.config;
 
 import learn.qzy.rpc.fault.retry.RetryStrategyKeys;
+import learn.qzy.rpc.fault.tolerant.TolerantStrategyKeys;
 import learn.qzy.rpc.loadbalancer.LoadBalancerKeys;
 import learn.qzy.rpc.serializer.SerializerKeys;
 import lombok.Data;
@@ -56,4 +57,9 @@ public class RpcConfig {
      * 重试策略
      */
     private String retryStrategy = RetryStrategyKeys.FIXED_INTERVAL;
+
+    /**
+     * 容错机制
+     */
+    private String tolerantStrategy = TolerantStrategyKeys.FAIL_FAST;
 }

@@ -52,9 +52,6 @@ public class ConsistentHashLoadBalancer implements LoadBalancer {
 
     /**
      * Hash算法
-     *
-     * @param key
-     * @return
      */
     private int getHash(Object key) {
         return key.hashCode();
